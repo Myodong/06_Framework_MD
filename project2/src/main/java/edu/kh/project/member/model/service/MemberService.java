@@ -17,7 +17,7 @@ import edu.kh.project.member.model.vo.Member;
 public interface MemberService  {
 
 	
-	/** 로구안 서비스
+	/** 로그인 서비스
 	 * @param inputMember (Email /Pw)
 	 * @return loginMember
 	 */
