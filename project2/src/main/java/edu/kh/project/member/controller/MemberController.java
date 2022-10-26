@@ -27,6 +27,7 @@ import edu.kh.project.member.model.vo.Member;
 // 회원 관련 요청을 받는 컨트롤러
 
 // Controller : 프레젠테이션 레이어  
+
 //				웹 애플리케이션으로 전달 받은 클라이언트의 요청을 
 //				알맞은 서비스로 연결하고
 //				서비스에서 반환된 결과에 따라
@@ -127,7 +128,7 @@ public class MemberController {
 	// @ModelAttribute VO타입 매개변수명
 	// -> 파라미터의 name속성 값이
 	//	  지정된 VO의 필드명과 같다면
-	// 	  해당 VO r객체의 필드에 파라미터를 세팅
+	// 	  해당 VO 객체의 필드에 파라미터를 세팅
 	
 	// [조건]
 	// 1. name 속성 값과 필드명이 같아야 함
