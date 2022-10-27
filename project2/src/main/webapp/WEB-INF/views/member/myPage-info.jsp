@@ -40,7 +40,7 @@
 
                     <div class="myPage-row">
                         <label>전화번호</label>
-                        <input type="text" name="memberTel" value="01012341234" maxlength="${loginMember.memberTel}">
+                        <input type="text" name="memberTel" value="${loginMember.memberTel}" maxlength="11">
                     </div>
 
                     <div class="myPage-row info-title">
