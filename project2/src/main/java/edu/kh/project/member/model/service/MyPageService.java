@@ -13,10 +13,22 @@ public interface MyPageService {
 	 */
 	/* public abstract */ int updateInfo(Member inputMember);
 
+	
+	
+	
 	/** 비밀번호 변경 서비스
 	 * @param paramMap
 	 * @return
 	 */
 	int changePw(Map<String, Object> paramMap);
+
+	
+	
+	/** 회원 탈퇴
+	 * @param memberNo
+	 * @param memberPw
+	 * @return 
+	 */
+	int memberDelete(int memberNo, String memberPw);
 
 }

@@ -38,4 +38,11 @@ public class MyPageDAO {
 	public int changePw(Map<String, Object> paramMap) {
 		return sqlSession.update("myPageMapper.changePw", paramMap);
 	}
+
+	public int memberDelete(int memberNo) {
+		return sqlSession.update("myPageMapper.memberDelete", memberNo);
+	}
+
+	
+	
 }

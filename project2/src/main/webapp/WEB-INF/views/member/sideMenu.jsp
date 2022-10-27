@@ -7,6 +7,6 @@
                     <li><a href="/member/myPage/profile">프로필</a></li>
                     <li><a href="/member/myPage/info">내 정보</a></li>
                     <li><a href="/member/myPage/changePw">비밀번호 변경</a></li>
-                    <li><a href="#/member/myPage/delete">회원탈퇴</a></li>
+                    <li><a href="/member/myPage/delete">회원탈퇴</a></li>
                 </ul>
             </section>

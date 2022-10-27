@@ -1,5 +1,6 @@
 package edu.kh.project.member.model.service;
 
+import java.lang.annotation.Target;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -61,6 +62,25 @@ public class MyPageServiceImpl implements MyPageService {
 		
 		return 0; // 비밀번호 불일치 시 0 반환
 	}
+
+
+	// 회원탈퇴 서비스
+	@Transactional
+	@Override
+	public int memberDelete(int memberNo, String memberPw) {
+		//1. 비밀번호를 조회한다.
+    	String encPw = dao.selectEncPw((memberNo));
+		
+		// 2. 일치하면 탈퇴
+		if (bcrypt.matches(memberPw, encPw)) {
+			
+			return dao.memberDelete(memberNo);
+		}
+		
+		return 0;
+	}
+	
+	
 	
 	
 	

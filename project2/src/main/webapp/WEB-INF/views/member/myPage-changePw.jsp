@@ -57,7 +57,7 @@
 
 
     </main>
-    <jsp:include page="/WEB-INF/views/common/footer.jsp"/>header.jsp include
+    <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
         <!-- daum 주소 api 추가 -->
 </body>
 </html>
