@@ -15,11 +15,11 @@
     
 </head>
 <body>
-     <main>
+    <main>
         <%-- header.jsp 추가(포함) --%>
         <%-- jsp 액션 태그 중 include
-             - 해당 위치에 page 속성으로 지정된 jsp 파일의 내용이 포함됨
-             - jsp 파일의 경로는 /webapp 폴더를 기준으로 작성
+            - 해당 위치에 page 속성으로 지정된 jsp 파일의 내용이 포함됨
+            - jsp 파일의 경로는 /webapp 폴더를 기준으로 작성
         --%>
             <jsp:include page="/WEB-INF/views/common/header.jsp"/>
 
@@ -97,7 +97,7 @@
                 </c:choose>
             </section>
         </section>
-     </main>
+    </main>
     <%-- footer.jsp 포함 --%>
     <jsp:include page="/WEB-INF/views/common/footer.jsp" />
 
