@@ -31,11 +31,11 @@
 
                 <div class="signUp-input-area">
                     <input type="text" name="memberEmail" id="memberEmail" 
-                    placeholder="아이디(이메일)" maxlength="20" autocomplete="off" required value="${tempMember.memberEmail}">
+                    placeholder="아이디(이메일)" maxlength="50" autocomplete="off" required value="${tempMember.memberEmail}">
                     
                     <button type="button">인증번호 받기</button>
                 </div>
-                <span class="signUp-message">메일을 받을 수 있는 이메일을 입력해주세요.</span>
+                <span class="signUp-message" id="emailMessage">메일을 받을 수 있는 이메일을 입력해주세요.</span>
 
 
 
@@ -150,5 +150,6 @@
             }).open();
         }
     </script>
+    <script src="/resources/js/member/signUp.js"></script>
 </body>
 </html>
