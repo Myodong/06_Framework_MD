@@ -31,18 +31,26 @@
 
                     이메일 : <input type="text" id="inputEmail">
                     <button id="selectEmail">조회</button>
-
-                    <!-- 일치하는 이메일이 있을 경우 -->
-                    <ul>
-                        <li>회원번호 : 1</li>
-                        <li>이메일 : user01@kh.or.kr</li>
-                        <li>닉네임 : 유저일</li>
-                        <li>주소 : 04540,,서울시 중구,,2층</li>
-                        <li>가입일 : 2022년 10월 18일</li>
-                    </ul>
-
-                    <!-- 일치하는 이메일이 없을 경우 -->
-                    <h4>user01@kh.or.kr은 존재하지 않습니다.</h4>
+                </div>
+                <div id="content-1-2">
+                    <h3>10초마다 모든 회원 정보 조회(AJAX)</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>회원번호</th>
+                                <th>이메일</th>
+                                <th>탈퇴여부</th>
+                            </tr>
+                        </thead >
+                        <tbody id="tbody">
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th>회원 수</th>
+                                <th colspan="2" id="memberCount"></th>
+                            </tr>
+                        </tfoot>
+                    </table>
                 </div>
             </section>
             <section class="content-2">

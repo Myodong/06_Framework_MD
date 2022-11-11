@@ -1,5 +1,7 @@
 package edu.kh.project.member.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -45,8 +47,8 @@ public class AjaxController {
 		   return result;
 	   }
 
-	   
-	   // 이메일로 회원 정보 조회
+   
+	   // 이메일로 회원 정보 조회 (JSON, GSON 활용)
 	   @PostMapping("/selectEmail")
 	   @ResponseBody
 	   public String selectEmail(String email) {
@@ -64,10 +66,32 @@ public class AjaxController {
 		   return new Gson().toJson(member);
 	   }
 	   
+	   // 이메일로 회원 정보 조회 (jackson-databind 활용)
+/*	   @PostMapping("/selectEmail")
+	   @ResponseBody
+	   public Member selectEmail(String email) {
+		   
+		   // jackson이란?
+		   // JSON <-> Java 객체 <-> JSON
+		   Member member = service.selectEmail(email);
+		   
+		   return member;
+		   // Java 객체 반환 시 Jackson 라이브러리가
+		   // JS객체로 변환
+*/   
 	   
 	   
-	   
-	   
+	   // 회원 목록 조회
+	   @GetMapping("/selectMemberList")
+	   @ResponseBody
+	   public String selectMemberList() {
+		   
+		   List<Member> memberlist = service.selectMemberList();
+		   
+		   // 객체 1개를 표현한 == JSON
+		   // 객체 여러개가 담긴 배열 = JSONArray
+		   return new Gson().toJson(memberlist);
+	   }
 	   
 	   
 	   
