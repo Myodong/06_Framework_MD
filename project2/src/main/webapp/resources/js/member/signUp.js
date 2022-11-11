@@ -267,21 +267,49 @@ memberNickname.addEventListener("input",function(){
     if(regEx.test(memberNickname.value)){ // 유효한 경우
 
         // ** 닉네임 중복검사 코드 추가 예정 ***
-        NickMessage.innerText = "유효한 닉네임 형식 입니다.";
-        NickMessage.classList.remove("error");
-        NickMessage.classList.add("confirm");
-        checkObj.memberNickname = true;
+        const param = {"memberNickname":memberNickname.value};
+        
+        $.ajax({
+            url : '/nicknameDupCheck',
+            data: param,
+            // type: "GET", // type 미작성 시 기본값 GET
+            success : (res)=>{
+                // 매개변수 res == 서버 비동기 통신 응답 데이터
+                // console.log("res : "+res);
+
+                if(res == 0){
+                    NickMessage.innerText = "유효한 닉네임 형식 입니다.";
+                    NickMessage.classList.remove("error");
+                    NickMessage.classList.add("confirm");
+                    checkObj.memberNickname = true;
+                }else{
+                    NickMessage.innerText = "이미 사용중인 닉네임 입니다..";
+                    NickMessage.classList.remove("confirm");
+                    NickMessage.classList.add("error");
+                    checkObj.memberNickname = false;
+                }
+
+            },
+            error: ()=>{
+                console.log("닉네임 중복 검사 실패");
+            },
+            complete : tempFn
+        });
 
     } else { // 유효하지 않을경우
         NickMessage.innerText = "유효한 닉네임 형식이 아닙니다.";
         NickMessage.classList.remove("confirm");
         NickMessage.classList.add("error");
         checkObj.memberNickname = false;
-
     }
-
 });
 
+function tempFn(){
+    console.log("닉네임 검싸 완료");
+};
+
+
+// 전화번호 유효성 검사
 const memberTel= document.getElementById("memberTel");      // input 태그
 const temlMessage = document.getElementById("temlMessage"); // span 태그
 
@@ -294,6 +322,7 @@ memberTel.addEventListener("input",function(){
         checkObj.memberTel = false;
         return;
     }
+
 
     // 전화번호 정규표현식 검사
     const regEx = /^0(1[01679]|2|[3-6][1-5]|70)[1-9]\d{2,3}\d{4}$/;

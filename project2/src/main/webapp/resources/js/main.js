@@ -83,3 +83,29 @@ function loginValidate(){
     
     return true;
 }
+
+//이메일로 회원 정보 조회(AJAX)
+const inputEmail = document.getElementById("inputEmail");
+const selectEmail = document.getElementById("selectEmail");
+
+selectEmail.addEventListener("click",(e)=>{
+
+    $.ajax({
+        url : "/selectEmail",
+        data : {"email":inputEmail.value},
+        type : "POST",
+        dataType : "JSON", // 응답데이터의 형식이 JSON 이다.
+        success : (member)=>{
+            console.log(member);
+
+            // 1) JSON 형태의 문자열로 반환된 경우 (JSON -> JS 객체)
+            // 방법 1) JSON.parse(문자열)
+            // console.log(JSON.parse(member));
+
+            // 방법 2) dataType : "JSON" 추가
+        },
+        error : ()=>{
+            console.log("이메일로 조회하기 실패");
+        }
+    });
+});
