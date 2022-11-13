@@ -4,23 +4,23 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-// Controller ¾î³ëÅ×ÀÌ¼Ç : ÄÄÆÄÀÏ¿¡°Ô ÇöÀç Å¬·¡½º°¡ Controller ÀÓÀ» ¾Ë·ÁÁÜ
-// 							+ bean µî·Ï (SpringÀÌ °´Ã¼·Î ¸¸µé¾î¼­ °ü¸®)
+// Controller ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì¼ï¿½ : ï¿½ï¿½ï¿½ï¿½ï¿½Ï¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Å¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Controller ï¿½ï¿½ï¿½ï¿½ ï¿½Ë·ï¿½ï¿½ï¿½
+// 							+ bean ï¿½ï¿½ï¿½ (Springï¿½ï¿½ ï¿½ï¿½Ã¼ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½î¼­ ï¿½ï¿½ï¿½ï¿½)
 @Controller
 public class MainController {
 
-	// forward ½Ã Controller ¸Þ¼­µåÀÇ ¹ÝÈ¯ÇüÀº
-	// String ¶Ç´Â ModelAndView µÑ Áß ÇÏ³ªÀÌ´Ù
+	// forward ï¿½ï¿½ Controller ï¿½Þ¼ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¯ï¿½ï¿½ï¿½ï¿½
+	// String ï¿½Ç´ï¿½ ModelAndView ï¿½ï¿½ ï¿½ï¿½ ï¿½Ï³ï¿½ï¿½Ì´ï¿½
 	
-	// Get¹æ½Ä "/" ·Î ¿äÃ»ÀÌ ¿À¸é ÇØ´ç ¸Þ¼­µå¿¡¼­ Ã³¸®
+	// Getï¿½ï¿½ï¿½ "/" ï¿½ï¿½ ï¿½ï¿½Ã»ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ø´ï¿½ ï¿½Þ¼ï¿½ï¿½å¿¡ï¿½ï¿½ Ã³ï¿½ï¿½
 	// == Handler Mapping
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String mainPage() {
 		
-		// ¸ÞÀÎ ÆäÀÌÁö ¿äÃ» ½Ã ÇÊ¿äÇÑ ÄÚµå ÀÛ¼º...
+		// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ã» ï¿½ï¿½ ï¿½Ê¿ï¿½ï¿½ï¿½ ï¿½Úµï¿½ ï¿½Û¼ï¿½...
 
-		// * forward ¹æ¹ý *
-		//  View ResolverÀÇ prefix / suffix¸¦ Á¦¿ÜÇÑ jsp °æ·Î¸¦ ÀÛ¼º
+		// * forward ï¿½ï¿½ï¿½ *
+		//  View Resolverï¿½ï¿½ prefix / suffixï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ jsp ï¿½ï¿½Î¸ï¿½ ï¿½Û¼ï¿½
 		return "common/main";
 		
 		// /WEB-INF/views/common/main.jsp
