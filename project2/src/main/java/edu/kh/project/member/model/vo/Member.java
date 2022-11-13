@@ -5,7 +5,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-// lobok ���̺귯��
+//lombok 라이브러리
 @NoArgsConstructor
 @Getter
 @Setter
