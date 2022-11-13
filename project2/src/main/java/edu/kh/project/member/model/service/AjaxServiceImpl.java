@@ -8,31 +8,31 @@ import org.springframework.stereotype.Service;
 import edu.kh.project.member.model.dao.AjaxDAO;
 import edu.kh.project.member.model.vo.Member;
 
-@Service // ºñÁî´Ï½º ·ÎÁ÷ Ã³¸® ¿ªÇÒ + bean µî·Ï
+@Service // ë¹„ì¦ˆë‹ˆìŠ¤ ë¡œì§ ì²˜ë¦¬ ì—­í•  + bean ë“±ë¡
 public class AjaxServiceImpl implements AjaxService {
 
 	@Autowired
 	private AjaxDAO dao;
 
-	// ÀÌ¸ŞÀÏ Áßº¹ °Ë»ç
+	// ì´ë©”ì¼ ì¤‘ë³µ ê²€ì‚¬
 	@Override
 	public int emailDupCheck(String memberEmail) {
 		return dao.emailDupcheck(memberEmail);
 	}
 
-	// ´Ğ³×ÀÓ Áßº¹ °Ë»ç
+	// ë‹‰ë„¤ì„ ì¤‘ë³µ ê²€ì‚¬
 	@Override
 	public int nicknameDupCheck(String memberNickname) {
 		return dao.nicknameDupCheck(memberNickname);
 	}
 
-	// ÀÌ¸ŞÀÏ·Î È¸¿øÁ¤º¸ Á¶È¸
+	// ì´ë©”ì¼ë¡œ íšŒì›ì •ë³´ ì¡°íšŒ
 	@Override
 	public Member selectEmail(String email) {
 		return dao.selectEmail(email);
 	}
 
-	// È¸¿ø ¸ñ·Ï Á¶È¸
+	// íšŒì› ëª©ë¡ ì¡°íšŒ
 	@Override
 	public List<Member> selectMemberList() {
 		return dao.selectMemberList();

@@ -4,10 +4,10 @@ import java.util.Map;
 
 import edu.kh.project.member.model.vo.Member;
 
-// ¼³°èÀû +À¯Áöº¸¼ö + AOP
+// ì„¤ê³„ì  +ìœ ì§€ë³´ìˆ˜ + AOP
 public interface MyPageService {
 
-	/** È¸¿ø Á¤º¸ ¼öÁ¤ ¼­ºñ½º
+	/** íšŒì› ì •ë³´ ìˆ˜ì • ì„œë¹„ìŠ¤
 	 * @param inputMember
 	 * @return
 	 */
@@ -16,7 +16,7 @@ public interface MyPageService {
 	
 	
 	
-	/** ºñ¹Ğ¹øÈ£ º¯°æ ¼­ºñ½º
+	/** ë¹„ë°€ë²ˆí˜¸ ë³€ê²½ ì„œë¹„ìŠ¤
 	 * @param paramMap
 	 * @return
 	 */
@@ -24,7 +24,7 @@ public interface MyPageService {
 
 	
 	
-	/** È¸¿ø Å»Åğ
+	/** íšŒì› íƒˆí‡´
 	 * @param memberNo
 	 * @param memberPw
 	 * @return 

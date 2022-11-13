@@ -5,7 +5,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-// lobok ¶óÀÌºê·¯¸®
+// lobok ï¿½ï¿½ï¿½Ìºê·¯ï¿½ï¿½
 @NoArgsConstructor
 @Getter
 @Setter

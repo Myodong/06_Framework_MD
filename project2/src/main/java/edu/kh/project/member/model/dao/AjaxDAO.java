@@ -8,17 +8,17 @@ import org.springframework.stereotype.Repository;
 
 import edu.kh.project.member.model.vo.Member;
 
-@Repository // DB ¿¬°áÇÏ´Â ¿ªÇÒ + bean µî·Ï
+@Repository // DB ì—°ê²°í•˜ëŠ” ì—­í•  + bean ë“±ë¡
 public class AjaxDAO {
 	
-	@Autowired // °°Àº ÀÚ·áÇüÀÌ beanÀ¸·Î µî·ÏµÇ¾î ÀÖÀ¸¸é ÀÚµ¿À¸·Î DI
+	@Autowired // ê°™ì€ ìë£Œí˜•ì´ beanìœ¼ë¡œ ë“±ë¡ë˜ì–´ ìˆìœ¼ë©´ ìë™ìœ¼ë¡œ DI
 	private SqlSessionTemplate sqlSession;
-	// SqlSessionTemplate : Ä¿³Ø¼Ç + ¸¶ÀÌ¹ÙÆ¼½º + ½ºÇÁ¸µ TXÁ¦¾î ´Ù µé¾î°¡ ÀÖ´Â °´Ã¼
+	// SqlSessionTemplate : ì»¤ë„¥ì…˜ + ë§ˆì´ë°”í‹°ìŠ¤ + ìŠ¤í”„ë§ TXì œì–´ ë‹¤ ë“¤ì–´ê°€ ìˆëŠ” ê°ì²´
 
 
 
 
-	/** ÀÌ¸ŞÀÏ Áßº¹ °Ë»ç
+	/** ì´ë©”ì¼ ì¤‘ë³µ ê²€ì‚¬
 	 * @param memberEmail
 	 * @return result
 	 */
@@ -29,7 +29,7 @@ public class AjaxDAO {
 
 
 
-	/** ´Ğ³×ÀÓ Áßº¹ °Ë»ç
+	/** ë‹‰ë„¤ì„ ì¤‘ë³µ ê²€ì‚¬
 	 * @param memberNickname
 	 * @return result
 	 */
@@ -40,7 +40,7 @@ public class AjaxDAO {
 
 
 
-	/** ÀÌ¸ŞÀÏ·Î È¸¿øÁ¤º¸ Á¶È¸
+	/** ì´ë©”ì¼ë¡œ íšŒì›ì •ë³´ ì¡°íšŒ
 	 * @param email
 	 * @return member
 	 */
@@ -54,14 +54,14 @@ public class AjaxDAO {
 
 
 
-	/** È¸¿ø ¸ñ·Ï Á¶È¸
+	/** íšŒì› ëª©ë¡ ì¡°íšŒ
 	 * @return
 	 */
 	public List<Member> selectMemberList() {
 		
 		// selectList() :
-		// Á¶È¸ °á°úÀÇ °¢ ÇàÀ» resultType ¶Ç´Â resulMap¿¡ ¸Â´Â 
-		// VO°´Ã¼¿¡ ´ã¾Æ List¿¡ Ãß°¡ÇÔ
+		// ì¡°íšŒ ê²°ê³¼ì˜ ê° í–‰ì„ resultType ë˜ëŠ” resulMapì— ë§ëŠ” 
+		// VOê°ì²´ì— ë‹´ì•„ Listì— ì¶”ê°€í•¨
 		return sqlSession.selectList("ajaxMapper.selectMemberList");
 	}
 	

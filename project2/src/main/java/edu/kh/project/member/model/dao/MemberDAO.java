@@ -6,27 +6,27 @@ import org.springframework.stereotype.Repository;
 
 import edu.kh.project.member.model.vo.Member;
 
-@Repository // ÆÛ½Ã½ºÅÏ½º ·¹ÀÌ¾î, ¿µ¼Ó¼ºÀ» (ÆÄÀÏ, DB)°¡Áø Å¬·¡½º + bean µî·Ï 
+@Repository // í¼ì‹œìŠ¤í„´ìŠ¤ ë ˆì´ì–´, ì˜ì†ì„±ì„ (íŒŒì¼, DB)ê°€ì§„ í´ë˜ìŠ¤ + bean ë“±ë¡ 
 public class MemberDAO {
 
-	// DBCP + ¸¶ÀÌ¹ÙÆ¼½º ÀÌ¿ë °´Ã¼ DI(ÀÇÁ¸¼º ÁÖÀÔ)
+	// DBCP + ë§ˆì´ë°”í‹°ìŠ¤ ì´ìš© ê°ì²´ DI(ì˜ì¡´ì„± ì£¼ì…)
 	@Autowired
 	private SqlSessionTemplate sqlSession;
 	
 	
 	
 	
-	/** ·Î±×ÀÎ DAO
+	/** ë¡œê·¸ì¸ DAO
 	 * @param memberEmail
 	 * @return loginMember
 	 */
 	public Member login(String memberEmail) {
-		// 	   sqlSession.selectOne("¸ÅÆÛÀÌ¸§.ÅÂ±×id",SQL ÀÛ¼º½Ã ÇÊ¿äÇÑ °ª);
+		// 	   sqlSession.selectOne("ë§¤í¼ì´ë¦„.íƒœê·¸id",SQL ì‘ì„±ì‹œ í•„ìš”í•œ ê°’);
 		return sqlSession.selectOne("memberMapper.login",memberEmail);
 	}
 
 
-	/** È¸¿ø °¡ÀÔ DAO
+	/** íšŒì› ê°€ì… DAO
 	 * @param inputMember
 	 * @return result
 	 */

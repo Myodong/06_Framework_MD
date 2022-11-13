@@ -8,13 +8,13 @@ import org.springframework.stereotype.Repository;
 
 import edu.kh.project.member.model.vo.Member;
 
-@Repository // ½ºÇÁ¸µÀÌ bean µî·Ï +°ü¸®(IOC)
+@Repository // ìŠ¤í”„ë§ì´ bean ë“±ë¡ +ê´€ë¦¬(IOC)
 public class MyPageDAO {
 
-	@Autowired // ½ºÇÁ¸µÀ¸·Î ºÎÅÍ beanÀ» ÁÖÀÔ ¹ŞÀ½(DI)
+	@Autowired // ìŠ¤í”„ë§ìœ¼ë¡œ ë¶€í„° beanì„ ì£¼ì… ë°›ìŒ(DI)
 	private SqlSessionTemplate sqlSession;
 
-	/** È¸¿ø Á¤º¸ ¼öÁ¤ DAO
+	/** íšŒì› ì •ë³´ ìˆ˜ì • DAO
 	 * @param inputMember
 	 * @return result
 	 */
@@ -23,7 +23,7 @@ public class MyPageDAO {
 		return sqlSession.update("myPageMapper.updateInfo",inputMember);
 	}
 
-	/** ¾ÏÈ£È­µÈ ºñ¹Ğ¹øÈ£ Á¶È¸ DAO
+	/** ì•”í˜¸í™”ëœ ë¹„ë°€ë²ˆí˜¸ ì¡°íšŒ DAO
 	 * @param memberNo
 	 * @return encPw
 	 */
@@ -31,7 +31,7 @@ public class MyPageDAO {
 		return sqlSession.selectOne("myPageMapper.selectEncPw", memberNo);
 	}
 
-	/** ºñ¹Ğ¹øÈ£ º¯°æ DAO
+	/** ë¹„ë°€ë²ˆí˜¸ ë³€ê²½ DAO
 	 * @param paramMap
 	 * @return result
 	 */
@@ -39,7 +39,7 @@ public class MyPageDAO {
 		return sqlSession.update("myPageMapper.changePw", paramMap);
 	}
 
-	/** È¸¿øÅ»Åğ DAO
+	/** íšŒì›íƒˆí‡´ DAO
 	 * @param memberNo
 	 * @return result
 	 */

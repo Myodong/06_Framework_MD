@@ -11,11 +11,11 @@ import org.springframework.transaction.annotation.Transactional;
 import edu.kh.project.member.model.dao.MyPageDAO;
 import edu.kh.project.member.model.vo.Member;
 
-@Service // bean µî·Ï
+@Service // bean ë“±ë¡
 public class MyPageServiceImpl implements MyPageService {
 
 	
-	@Autowired // DI(ÀÇÁ¸¼º ÁÖÀÔ)
+	@Autowired // DI(ì˜ì¡´ì„± ì£¼ì…)
 	private MyPageDAO dao;
 	
 	@Autowired
@@ -23,7 +23,7 @@ public class MyPageServiceImpl implements MyPageService {
 
 	
 	
-	// È¸¿ø Á¤º¸ ¼öÁ¤ ¼­ºñ½º
+	// íšŒì› ì •ë³´ ìˆ˜ì • ì„œë¹„ìŠ¤
 	@Transactional
 	@Override
 	public int updateInfo(Member inputMember) {
@@ -34,44 +34,44 @@ public class MyPageServiceImpl implements MyPageService {
 
 	
 	
-	// ºñ¹Ğ¹øÈ£ º¯°æ ¼­ºñ½º
+	// ë¹„ë°€ë²ˆí˜¸ ë³€ê²½ ì„œë¹„ìŠ¤
 	@Transactional
 	@Override
 	public int changePw(Map<String, Object> paramMap) {
-		// ÇöÀç ºñ¹Ğ¹øÈ£ ÀÏÄ¡ ½Ã »õ ºñ¹Ğ¹øÈ£º¯°æ
+		// í˜„ì¬ ë¹„ë°€ë²ˆí˜¸ ì¼ì¹˜ ì‹œ ìƒˆ ë¹„ë°€ë²ˆí˜¸ë³€ê²½
 		
-		// 1. È¸¿ø ¹øÈ£¸¦ ÀÌ¿ëÇØ¼­ DB¿¡¼­ ¾ÏÈ£È­µÈ ºñ¹Ğ¹øÈ£¸¦ Á¶È¸
+		// 1. íšŒì› ë²ˆí˜¸ë¥¼ ì´ìš©í•´ì„œ DBì—ì„œ ì•”í˜¸í™”ëœ ë¹„ë°€ë²ˆí˜¸ë¥¼ ì¡°íšŒ
 		String encPw = dao.selectEncPw((int)paramMap.get("memberNo"));
 		
-		// 2. matches(ÀÔ·ÂPW, ¾ÏÈ£È­PW) °á°ú°¡ trueÀÎ °æ¿ì
-		//    »õ ºñ¹Ğ¹øÈ£·Î UPDATEÇÏ´Â DAOÄÚµå¸¦ È£Ãâ
+		// 2. matches(ì…ë ¥PW, ì•”í˜¸í™”PW) ê²°ê³¼ê°€ trueì¸ ê²½ìš°
+		//    ìƒˆ ë¹„ë°€ë²ˆí˜¸ë¡œ UPDATEí•˜ëŠ” DAOì½”ë“œë¥¼ í˜¸ì¶œ
 		if (bcrypt.matches((String)paramMap.get("currentPw"), encPw)) {
 			
-			// »õ ºñ¹Ğ¹øÈ£ ¾ÏÈ£È­
+			// ìƒˆ ë¹„ë°€ë²ˆí˜¸ ì•”í˜¸í™”
 			String newPw =bcrypt.encode((String)paramMap.get("newPw")); 
 			
 			paramMap.put("newPw", newPw);
-			// paramMap¿¡ Á¸ÀçÇÏ´Â ±âÁ¸ "newPw"¸¦ µ¤¾î ¾²±â
+			// paramMapì— ì¡´ì¬í•˜ëŠ” ê¸°ì¡´ "newPw"ë¥¼ ë®ì–´ ì“°ê¸°
 			
 			
-			// DAO È£Ãâ
+			// DAO í˜¸ì¶œ
 			int result = dao.changePw(paramMap);
 			
 			return result;
 		}
 		
-		return 0; // ºñ¹Ğ¹øÈ£ ºÒÀÏÄ¡ ½Ã 0 ¹İÈ¯
+		return 0; // ë¹„ë°€ë²ˆí˜¸ ë¶ˆì¼ì¹˜ ì‹œ 0 ë°˜í™˜
 	}
 
 
-	// È¸¿øÅ»Åğ ¼­ºñ½º
+	// íšŒì›íƒˆí‡´ ì„œë¹„ìŠ¤
 	@Transactional
 	@Override
 	public int memberDelete(int memberNo, String memberPw) {
-		//1. ºñ¹Ğ¹øÈ£¸¦ Á¶È¸ÇÑ´Ù.
+		//1. ë¹„ë°€ë²ˆí˜¸ë¥¼ ì¡°íšŒí•œë‹¤.
     	String encPw = dao.selectEncPw((memberNo));
 		
-		// 2. ÀÏÄ¡ÇÏ¸é Å»Åğ
+		// 2. ì¼ì¹˜í•˜ë©´ íƒˆí‡´
 		if (bcrypt.matches(memberPw, encPw)) {
 			
 			return dao.memberDelete(memberNo);

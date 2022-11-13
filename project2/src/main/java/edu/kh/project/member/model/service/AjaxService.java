@@ -4,29 +4,29 @@ import java.util.List;
 
 import edu.kh.project.member.model.vo.Member;
 
-// ¼­ºñ½º ÀÎÅÍÆäÀÌ½º ¿Ö ¸¸µé¾úÁö?
-// ¼³°è, À¯Áöº¸¼ö¼º Çâ»ó, AOP ¶§¹®¿¡
+// ì„œë¹„ìŠ¤ ì¸í„°í˜ì´ìŠ¤ ì™œ ë§Œë“¤ì—ˆì§€?
+// ì„¤ê³„, ìœ ì§€ë³´ìˆ˜ì„± í–¥ìƒ, AOP ë•Œë¬¸ì—
 public interface AjaxService {
 
-	/** ÀÌ¸ŞÀÏ Áßº¹ °Ë»ç
+	/** ì´ë©”ì¼ ì¤‘ë³µ ê²€ì‚¬
 	 * @param memberEmail
 	 * @return result
 	 */
 	int emailDupCheck(String memberEmail);
 
-	/** ´Ğ³×ÀÓ Áßº¹ °Ë»ç
+	/** ë‹‰ë„¤ì„ ì¤‘ë³µ ê²€ì‚¬
 	 * @param memberNickname
 	 * @return result
 	 */
 	int nicknameDupCheck(String memberNickname);
 
-	/** ÀÌ¸ŞÀÏ·Î È¸¿øÁ¤º¸ Á¶È¸
+	/** ì´ë©”ì¼ë¡œ íšŒì›ì •ë³´ ì¡°íšŒ
 	 * @param email
 	 * @return member
 	 */
 	Member selectEmail(String email);
 
-	/** È¸¿ø ¸ñ·Ï Á¶È¸
+	/** íšŒì› ëª©ë¡ ì¡°íšŒ
 	 * @return
 	 */
 	List<Member> selectMemberList();
