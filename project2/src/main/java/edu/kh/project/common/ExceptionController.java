@@ -4,48 +4,48 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
-// ¿¹¿Ü Ã³¸®¿ë ÄÁÆ®·Ñ·¯
+// ì˜ˆì™¸ ì²˜ë¦¬ìš© ì»¨íŠ¸ë¡¤ëŸ¬
 @ControllerAdvice
 public class ExceptionController {
 
-	/* ½ºÇÁ¸µ ¿¹¿Ü Ã³¸® ¹æ¹ı (3Á¾·ù, Áßº¹»ç¿ë °¡´É)
+	/* ìŠ¤í”„ë§ ì˜ˆì™¸ ì²˜ë¦¬ ë°©ë²• (3ì¢…ë¥˜, ì¤‘ë³µì‚¬ìš© ê°€ëŠ¥)
 	 * 
-	 * 1¼øÀ§ : try-catch / throws ¿¹¿ÜÃ³¸® ±¸¹®
-	 * 			-> ¸Ş¼­µå ´ÜÀ§·Î Ã³¸®
+	 * 1ìˆœìœ„ : try-catch / throws ì˜ˆì™¸ì²˜ë¦¬ êµ¬ë¬¸
+	 * 			-> ë©”ì„œë“œ ë‹¨ìœ„ë¡œ ì²˜ë¦¬
 	 * 
-	 * 2¼øÀ§ : @ExceptionHandler ¾î³ëÅ×ÀÌ¼Ç
-	 * 			-> Å¬·¡½º ´ÜÀ§·Î Ã³¸® 
-	 * 			- ÇÏ³ªÀÇ ÄÁÆ®·Ñ·¯¿¡¼­ ¹ß»ıÇÏ´Â ¿¹¿Ü¸¦
-	 * 			  ÇÏ³ªÀÇ ¸Ş¼­µå¿¡ ¸ğ¾Æ¼­ Ã³¸®
+	 * 2ìˆœìœ„ : @ExceptionHandler ì–´ë…¸í…Œì´ì…˜
+	 * 			-> í´ë˜ìŠ¤ ë‹¨ìœ„ë¡œ ì²˜ë¦¬ 
+	 * 			- í•˜ë‚˜ì˜ ì»¨íŠ¸ë¡¤ëŸ¬ì—ì„œ ë°œìƒí•˜ëŠ” ì˜ˆì™¸ë¥¼
+	 * 			  í•˜ë‚˜ì˜ ë©”ì„œë“œì— ëª¨ì•„ì„œ ì²˜ë¦¬
 	 * 
-	 * 3¼øÀ§ : @ControllerAdvice ¾î³ëÅ×ÀÌ¼Ç
-	 * 			-> Àü¿ª(À¥ ¾ÖÇÃ¸®ÄÉÀÌ¼Ç)¿¡¼­ ¹ß»ıÇÏ´Â ¿¹¿Ü¸¦ ¸ğ¾Æ¼­ Ã³¸®
-	 * 			-º°µµ Å¬·¡½º·Î ÀÛ¼º
+	 * 3ìˆœìœ„ : @ControllerAdvice ì–´ë…¸í…Œì´ì…˜
+	 * 			-> ì „ì—­(ì›¹ ì• í”Œë¦¬ì¼€ì´ì…˜)ì—ì„œ ë°œìƒí•˜ëŠ” ì˜ˆì™¸ë¥¼ ëª¨ì•„ì„œ ì²˜ë¦¬
+	 * 			-ë³„ë„ í´ë˜ìŠ¤ë¡œ ì‘ì„±
 	 */
 	
 		
-		// ÇÁ·ÎÁ§Æ® ³»ºÎ¿¡¼­ ¹ß»ıÇÏ´Â ¸ğµç ¿¹¿Ü Ã³¸®
+		// í”„ë¡œì íŠ¸ ë‚´ë¶€ì—ì„œ ë°œìƒí•˜ëŠ” ëª¨ë“  ì˜ˆì™¸ ì²˜ë¦¬
 		@ExceptionHandler(Exception.class)
 		public String exceptionHandler(Exception e, Model model) {
 			
-			// ¸Å°³º¯¼ö Exception e : ¹ß»ıÇÑ ¿¹¿Ü Àü´Ş ¹ŞÀº ¸Å°³º¯¼ö
+			// ë§¤ê°œë³€ìˆ˜ Exception e : ë°œìƒí•œ ì˜ˆì™¸ ì „ë‹¬ ë°›ì€ ë§¤ê°œë³€ìˆ˜
 			e.printStackTrace();
 			
-			model.addAttribute("errorMessage", "¼­ºñ½º ÀÌ¿ë Áß ¹®Á¦°¡ ¹ß»ıÇß½À´Ï´Ù.");
+			model.addAttribute("errorMessage", "ì„œë¹„ìŠ¤ ì´ìš© ì¤‘ ë¬¸ì œê°€ ë°œìƒí–ˆìŠµë‹ˆë‹¤.");
 			model.addAttribute("e",e);
 			
 			return "common/error";
 		}
 		
 /*
-		//¿¹¿Üº°·Î ³ª´²¼­µµ Ã³¸®°¡´É
+		//ì˜ˆì™¸ë³„ë¡œ ë‚˜ëˆ ì„œë„ ì²˜ë¦¬ê°€ëŠ¥
 		@ExceptionHandler(RuntimeException.class)
 		public String exceptionHandler(Exception e, Model model) {
 			
-			// ¸Å°³º¯¼ö Exception e : ¹ß»ıÇÑ ¿¹¿Ü Àü´Ş ¹ŞÀº ¸Å°³º¯¼ö
+			// ë§¤ê°œë³€ìˆ˜ Exception e : ë°œìƒí•œ ì˜ˆì™¸ ì „ë‹¬ ë°›ì€ ë§¤ê°œë³€ìˆ˜
 			e.printStackTrace();
 			
-			model.addAttribute("errorMessage", "¼­ºñ½º ÀÌ¿ë Áß ¹®Á¦°¡ ¹ß»ıÇß½À´Ï´Ù.");
+			model.addAttribute("errorMessage", "ì„œë¹„ìŠ¤ ì´ìš© ì¤‘ ë¬¸ì œê°€ ë°œìƒí–ˆìŠµë‹ˆë‹¤.");
 			model.addAttribute("e",e);
 			
 			
