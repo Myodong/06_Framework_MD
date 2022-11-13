@@ -4,23 +4,23 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-// Controller ������̼� : �����Ͽ��� ���� Ŭ������ Controller ���� �˷���
-// 							+ bean ��� (Spring�� ��ü�� ���� ����)
+// Controller 어노테이션 : 컴파일에게 현재 클래스가 Controller 임을 알려줌
+// 							+ bean 등록 (Spring이 객체로 만들어서 관리)
 @Controller
 public class MainController {
 
-	// forward �� Controller �޼����� ��ȯ����
-	// String �Ǵ� ModelAndView �� �� �ϳ��̴�
+	// forward 시 Controller 메서드의 반환형은
+	// String 또는 ModelAndView 둘 중 하나이다
 	
-	// Get��� "/" �� ��û�� ���� �ش� �޼��忡�� ó��
+	// Get방식 "/" 로 요청이 오면 해당 메서드에서 처리
 	// == Handler Mapping
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String mainPage() {
 		
-		// ���� ������ ��û �� �ʿ��� �ڵ� �ۼ�...
+		// 메인 페이지 요청 시 필요한 코드 작성...
 
-		// * forward ��� *
-		//  View Resolver�� prefix / suffix�� ������ jsp ��θ� �ۼ�
+		// * forward 방법 *
+		//  View Resolver의 prefix / suffix를 제외한 jsp 경로를 작성
 		return "common/main";
 		
 		// /WEB-INF/views/common/main.jsp
