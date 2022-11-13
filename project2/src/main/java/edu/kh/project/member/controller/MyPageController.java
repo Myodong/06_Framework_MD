@@ -16,50 +16,50 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import edu.kh.project.member.model.service.MyPageService;
 import edu.kh.project.member.model.vo.Member;
 
-// Å¬·¡½º ·¹º§¿¡ ÀÛ¼ºµÈ  @RequestMapping
-// -> ¿äÃ»ÁÖ¼ÒÁß ¾Õ¿¡ °øÅëµÈ ºÎºĞÀ» ÀÛ¼ºÇÏ¿©
-//    ÇØ´ç À¯Çü ¿äÃ»À» ¸ğµÎ ¹Ş¾ÆµéÀÎ´Ù°í ¾Ë¸²
-@RequestMapping("/member/myPage") // °øÅëºÎºĞ ÁÖ¼Ò
+// í´ë˜ìŠ¤ ë ˆë²¨ì— ì‘ì„±ëœ  @RequestMapping
+// -> ìš”ì²­ì£¼ì†Œì¤‘ ì•ì— ê³µí†µëœ ë¶€ë¶„ì„ ì‘ì„±í•˜ì—¬
+//    í•´ë‹¹ ìœ í˜• ìš”ì²­ì„ ëª¨ë‘ ë°›ì•„ë“¤ì¸ë‹¤ê³  ì•Œë¦¼
+@RequestMapping("/member/myPage") // ê³µí†µë¶€ë¶„ ì£¼ì†Œ
 
-@SessionAttributes("loginMember") // Å»Åğ ¼º°ø ½Ã ·Î±×¾Æ¿ô¿¡ »ç¿ë
+@SessionAttributes("loginMember") // íƒˆí‡´ ì„±ê³µ ì‹œ ë¡œê·¸ì•„ì›ƒì— ì‚¬ìš©
 
-@Controller // bean µî·Ï
+@Controller // bean ë“±ë¡
 public class MyPageController {
 
 	@Autowired
 	private MyPageService service;
 	
-	// ³» Á¤º¸ ÆäÀÌÁö ÀÌµ¿
-	@GetMapping("/info") // ³ª¸ÓÁö ÁÖ¼Ò Àå¼º
+	// ë‚´ ì •ë³´ í˜ì´ì§€ ì´ë™
+	@GetMapping("/info") // ë‚˜ë¨¸ì§€ ì£¼ì†Œ ì¥ì„±
 	public String info() {
 		return "member/myPage-info";
 	}
 	
 	
-	// ³» Á¤º¸ ¼öÁ¤
+	// ë‚´ ì •ë³´ ìˆ˜ì •
 	@PostMapping("/info")
 	public String updateInfo(Member inputMember,
 							 String[] memberAddress,
 							 @SessionAttribute("loginMember") Member loginMember,
 							 RedirectAttributes ra) {
 	
-		// inputMember : ÀÔ·Â ¹ŞÀº memberNickname / memberTel / memberAddress(°¡°ø ÇÊ¿ä)
-		// memberAddress : ÀÔ·ÂµÈ ¿ìÆí¹øÈ£, ÁÖ¼Ò, »ó¼¼ÁÖ¼Ò°¡ ´ã±ä¹è¿­
+		// inputMember : ì…ë ¥ ë°›ì€ memberNickname / memberTel / memberAddress(ê°€ê³µ í•„ìš”)
+		// memberAddress : ì…ë ¥ëœ ìš°í¸ë²ˆí˜¸, ì£¼ì†Œ, ìƒì„¸ì£¼ì†Œê°€ ë‹´ê¸´ë°°ì—´
 		
 		// @SessionAttribute("loginMember") Member loginMember
-		//	-> sessionÀÇ ¼Ó¼º Áß "loginMember"¸¦ Å°·Î °¡Áö´Â °ªÀ»
-		// 	   ¸Å°³º¯¼ö¿¡ ´ëÀÔ
+		//	-> sessionì˜ ì†ì„± ì¤‘ "loginMember"ë¥¼ í‚¤ë¡œ ê°€ì§€ëŠ” ê°’ì„
+		// 	   ë§¤ê°œë³€ìˆ˜ì— ëŒ€ì…
 		
-		// ±âÁ¸ ¹æ¹ı
+		// ê¸°ì¡´ ë°©ë²•
 		//HttpSession session = req.getSession();
 		//Member loginMember = (Member)session.getAttribute("loginMember");
 		
 		
-		// 1. ·Î±×ÀÎµÈ È¸¿ø Á¤º¸¿¡¼­ È¸¿ø ¹øÈ£¸¦ ¾ò¾î¿Í inputMember¿¡ ÀúÀå
+		// 1. ë¡œê·¸ì¸ëœ íšŒì› ì •ë³´ì—ì„œ íšŒì› ë²ˆí˜¸ë¥¼ ì–»ì–´ì™€ inputMemberì— ì €ì¥
 		inputMember.setMemberNo(loginMember.getMemberNo());
 		
-		// 2. inputMemeber.memberAddressÀÇ °ª¿¡ µû¶ó º¯°æÇÏ±â
-		if(inputMember.getMemberAddress().equals(",,")) { // ÁÖ¼Ò ¹ÌÀÛ¼º
+		// 2. inputMemeber.memberAddressì˜ ê°’ì— ë”°ë¼ ë³€ê²½í•˜ê¸°
+		if(inputMember.getMemberAddress().equals(",,")) { // ì£¼ì†Œ ë¯¸ì‘ì„±
 			inputMember.setMemberAddress(null);
 			
 		} else {
@@ -67,61 +67,61 @@ public class MyPageController {
 			inputMember.setMemberAddress(address);
 		}
 		
-		// È¸¿ø Á¤º¸ ¼öÁ¤ ¼­ºñ½º È£Ãâ ÈÄ °á°ú ¹İÈ¯ ¹Ş±â
+		// íšŒì› ì •ë³´ ìˆ˜ì • ì„œë¹„ìŠ¤ í˜¸ì¶œ í›„ ê²°ê³¼ ë°˜í™˜ ë°›ê¸°
 		int result = service.updateInfo(inputMember);
 		
 		String message =null;
 		
 		if(result > 0) {
-			message ="È¸¿ø Á¤º¸°¡ ¼öÁ¤µÇ¾ú½À´Ï´Ù.";
+			message ="íšŒì› ì •ë³´ê°€ ìˆ˜ì •ë˜ì—ˆìŠµë‹ˆë‹¤.";
 			
-			// DB - session µ¿±âÈ­ ÀÛ¾÷
+			// DB - session ë™ê¸°í™” ì‘ì—…
 			loginMember.setMemberNickname(	inputMember.getMemberNickname());
 			loginMember.setMemberTel(		inputMember.getMemberTel());
 			loginMember.setMemberAddress(	inputMember.getMemberAddress());
 		} else {
-			message ="È¸¿ø Á¤º¸ ¼öÁ¤ ½ÇÆĞ....";
+			message ="íšŒì› ì •ë³´ ìˆ˜ì • ì‹¤íŒ¨....";
 		}		   
 		
 		
 		ra.addFlashAttribute("message",message);
 		
-		return "redirect:info"; // ³» Á¤º¸ Àç¿äÃ»
+		return "redirect:info"; // ë‚´ ì •ë³´ ì¬ìš”ì²­
 	}
 		
-	// ºñ¹Ğ¹øÈ£ º¯°æ ÆäÀÌÁö ÀÌµ¿
+	// ë¹„ë°€ë²ˆí˜¸ ë³€ê²½ í˜ì´ì§€ ì´ë™
 	@GetMapping("/changePw")
 	public String changePw() {
 		return"member/myPage-changePw";
 	}
 	
 	
-	// ºñ¹Ğ¹øÈ£ º¯°æ
+	// ë¹„ë°€ë²ˆí˜¸ ë³€ê²½
 	@PostMapping("/changePw")
 	public String changePw(@SessionAttribute("loginMember") Member loginMember,
-						   //String currentPw, String newPw //¹æ¹ı 1 ÆÄ¶ó¹ÌÅÍ °¢°¢ Àü´Ş ¹Ş±â
-						   @RequestParam Map<String,Object> paramMap, // ¹æ¹ı2
+						   //String currentPw, String newPw //ë°©ë²• 1 íŒŒë¼ë¯¸í„° ê°ê° ì „ë‹¬ ë°›ê¸°
+						   @RequestParam Map<String,Object> paramMap, // ë°©ë²•2
 						   RedirectAttributes ra) {
 		
 		// @RequestParam Map<String,Object> paramMap
-		// - ¸ğµç ÆÄ¶ó¹ÌÅÍ¸¦ ¸Ê Çü½ÄÀ¸·Î ¾ò¾î¿Í ÀúÀå
+		// - ëª¨ë“  íŒŒë¼ë¯¸í„°ë¥¼ ë§µ í˜•ì‹ìœ¼ë¡œ ì–»ì–´ì™€ ì €ì¥
 		
-		// 1. loginMember¿¡¼­ È¸¿ø ¹øÈ£¸¦ ¾ò¾î¿Í paramMap¿¡ Ãß°¡
+		// 1. loginMemberì—ì„œ íšŒì› ë²ˆí˜¸ë¥¼ ì–»ì–´ì™€ paramMapì— ì¶”ê°€
 		paramMap.put("memberNo", loginMember.getMemberNo());
 		
-		// 2. ¼­ºñ½º È£Ãâ ÈÄ °á°ú ¹İÈ¯ ¹Ş±â
+		// 2. ì„œë¹„ìŠ¤ í˜¸ì¶œ í›„ ê²°ê³¼ ë°˜í™˜ ë°›ê¸°
 		int result = service.changePw(paramMap);
 		
 		String path = null;
 		String message = null;
 		
-		if (result > 0) { // ¼º°ø
+		if (result > 0) { // ì„±ê³µ
 			path="info";
-			message = "ºñ¹Ğ¹øÈ£°¡ º¯°æµÇ¾ú½À´Ï´Ù.";
+			message = "ë¹„ë°€ë²ˆí˜¸ê°€ ë³€ê²½ë˜ì—ˆìŠµë‹ˆë‹¤.";
 			
-		} else { // ½ÇÆĞ
+		} else { // ì‹¤íŒ¨
 			path ="changePw";
-			message = "ÇöÀç ºñ¹Ğ¹øÈ£°¡ ÀÏÄ¡ÇÏÁö ¾Ê½À´Ï´Ù.";
+			message = "í˜„ì¬ ë¹„ë°€ë²ˆí˜¸ê°€ ì¼ì¹˜í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.";
 		}
 		
 		ra.addFlashAttribute("message", message);
@@ -132,7 +132,7 @@ public class MyPageController {
 	
 	
 	
-	// È¸¿ø Å»Åğ ÆäÀÌÁö ÀÌµ¿
+	// íšŒì› íƒˆí‡´ í˜ì´ì§€ ì´ë™
 	@GetMapping("/delete")
 	public String memberDelete() {
 		return "member/myPage-delete";
@@ -141,35 +141,35 @@ public class MyPageController {
 	
 	
 	
-	// È¸¿ø Å»Åğ
+	// íšŒì› íƒˆí‡´
 	@PostMapping("/delete")
 	public String memberDelete(@SessionAttribute("loginMember")Member loginMember,
 							   String memberPw,
 							   SessionStatus status,
 							   RedirectAttributes ra
 							   ) {
-		// ¼­ºñ½º È£Ãâ ÈÄ °á°ú ¹İÈ¯ ¹Ş±â
+		// ì„œë¹„ìŠ¤ í˜¸ì¶œ í›„ ê²°ê³¼ ë°˜í™˜ ë°›ê¸°
 		int result = service.memberDelete(loginMember.getMemberNo(),memberPw);
 		
 		String message =null;
 		String path =null;
 		
-		if(result > 0 ) { // ¼º°ø
-			message = "Å»Åğ µÇ¾ú½À´Ï´Ù";
+		if(result > 0 ) { // ì„±ê³µ
+			message = "íƒˆí‡´ ë˜ì—ˆìŠµë‹ˆë‹¤";
 			
-			path="/"; //¸ŞÀÎÆäÀÌÁö
+			path="/"; //ë©”ì¸í˜ì´ì§€
 			
-			// ·Î±×¾Æ¿ô ÄÚµå Ãß°¡
+			// ë¡œê·¸ì•„ì›ƒ ì½”ë“œ ì¶”ê°€
 			status.setComplete();
 			
 			
-		} else { // ½ÇÆĞ
-			message ="ºñ¹Ğ¹øÈ£°¡ ÀÏÄ¡ÇÏÁö ¾Ê½À´Ï´Ù.";
+		} else { // ì‹¤íŒ¨
+			message ="ë¹„ë°€ë²ˆí˜¸ê°€ ì¼ì¹˜í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.";
 			
-			path ="delete"; //Å»Åğ ÆäÀÌÁö
+			path ="delete"; //íƒˆí‡´ í˜ì´ì§€
 		}
 		
-		// message Àü´Ş ÄÚµå ÀÛ¼º
+		// message ì „ë‹¬ ì½”ë“œ ì‘ì„±
 			ra.addFlashAttribute("message", message);
 			
 			
@@ -178,15 +178,15 @@ public class MyPageController {
 			
 			
 			
-		//status.setComplete(); // ¼¼¼Ç ¹«È¿È­
-		// -> Å¬·¡½º ·¹º§¿¡ ÀÛ¼ºµÈ
-		// @SessionAttributes("Key")¿¡ ÀÛ¼ºµÈ 
-		// Key°¡ ÀÏÄ¡ÇÏ´Â °ª¸¸ ¹«È¿È­
+		//status.setComplete(); // ì„¸ì…˜ ë¬´íš¨í™”
+		// -> í´ë˜ìŠ¤ ë ˆë²¨ì— ì‘ì„±ëœ
+		// @SessionAttributes("Key")ì— ì‘ì„±ëœ 
+		// Keyê°€ ì¼ì¹˜í•˜ëŠ” ê°’ë§Œ ë¬´íš¨í™”
 		
-		// ex) session¿¡¼­ "loginMember"¸¦ ¾ø¾Ö¾ß ÇÑ´Ù
+		// ex) sessionì—ì„œ "loginMember"ë¥¼ ì—†ì• ì•¼ í•œë‹¤
 		// == @SessionAttributes("loginMember")
 		//    ...
-		//    status.complete(); // "loginMember" ¹«È¿È­
+		//    status.complete(); // "loginMember" ë¬´íš¨í™”
 		
 		
 	
