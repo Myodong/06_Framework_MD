@@ -49,7 +49,7 @@
                         (단, 서버에서 파일/ 문자열에 대한 별도 처리가 필요)
                 -->
                 
-                <form action="updateProfile" method="post" name="myPage-frm" enctype="multipart/form-data">
+                <form action = "updateProfile" method = "POST" name = "myPage-frm" enctype = "multipart/form-data"onsubmit = "return profileValidate()">
 
                     <div class="profile-image-area">
                         <c:if test="${empty loginMember.profileImage}">

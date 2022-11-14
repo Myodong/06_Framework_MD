@@ -162,11 +162,29 @@ const profileImange = document.getElementById("profile-image")
 const deleteImage = document.getElementById("delete-image")
 const imageInput = document.getElementById("image-input")
 
+// 초기 프로필 이미지 상태를 저장하는 변수
+// (true : 업로드된 이미지 있음, false : 기본 이미지)
+let initCheck;
+
+// 이미지가 업로드 되었거나 삭제되었음을 나타내는 변수
+// (-1 : 초기값(취소), 0 : 프로필 삭제(x버튼 클릭), 1 : 새 이미지 없로드)
+let deleteCheck = -1;
+
+
+
 // 프로필 수정 페이지에 처음 들어왔을 때의 이미지 경로
 const originalImage = profileImange.getAttribute("src")
 
 // 프로필 수정 화면일 경우
 if(imageInput != null) {
+    
+    // 해당 화면 진입 시 프로필 이미지 상태를 저장(initCheck)
+    if(profileImange.getAttribute("src")== "/resources/omages/user.png"){
+        //기본 이미지인 경우
+        initCheck = false;
+    } else{
+        initCheck = true;
+    }
 
     // 이미지가 선택되었을 때 미리보기 
 
@@ -206,11 +224,15 @@ if(imageInput != null) {
                 // img 태그의 src 속성으로 읽은 이미지 파일 경로 추가
                 // == 이미지 미리보기
                 profileImange.setAttribute("src", event.target.result);
+
+
+                deleteCheck =1;
             }
         }else { // 취소가 눌러진 경우
             
             // 초기 이미지로 다시 변경
             profileImange.setAttribute("src",originalImage);
+            deleteCheck =-1;
         }
 
 
@@ -220,7 +242,31 @@ if(imageInput != null) {
     deleteImage.addEventListener("click", () =>{
         profileImange.setAttribute("src","/resources/images/user.png")
         imageInput.value='';
+        deleteCheck =0;
     })
     
+
+}
+
+
+function profileValidate(){
+
+    // 이미지가 없음 -> 있음
+    if(!initCheck && deleteCheck == 1){ 
+        return true;
+    }
+
+    // 있음 -> 없음(x버튼)
+    if(initCheck && deleteCheck == 0){ 
+        return true;
+    }
+
+    // 있음 -> 있음(새로운 이미지 업로드)
+    if(initCheck && deleteCheck == 1){ 
+        return true;
+    }
+
+    alert("이미지 변경 후 클릭하세요")
+    return false;
 
 }
