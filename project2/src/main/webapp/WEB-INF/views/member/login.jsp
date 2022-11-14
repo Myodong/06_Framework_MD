@@ -49,17 +49,17 @@
         </form>
         
     </main>
-         <%-- session scope에 message 속성이 존재하는 경우
+    <%-- session scope에 message 속성이 존재하는 경우
         alert 창을 이용해서 내용을 출력
-      --%>
+    --%>
 
-      <c:if test="${not empty message}">
+    <c:if test="${not empty message}">
         <script>
             alert("${message}");
         </script>
 
         <%-- message 1회 출력후 모든 scope에서 삭제 --%>
         <c:remove var="message"/>
-      </c:if>
+    </c:if>
 </body>
 </html>

@@ -72,8 +72,10 @@ public class MemberController {
 		
 		
 		// * forward  방법 : prefix / suffix를 제외한 나머지 jsp 경로 작성
+		//  forward - 요청 위임
 		
 		// * redirect 방법 : "redirect : 요청주소 ";
+		// redirect 재요청
 		return "redirect:/";
 	}
 
@@ -256,7 +258,7 @@ public class MemberController {
 		// session.invalidate();
 		// -> 지금은 적용하면 안됨....
 		
-		// 왜? @SessionAttributes로 session scope에 등록된 값을 무효화 시키려면
+		// 왜? @SessionAttributes로 session  scope에 등록된 값을 무효화 시키려면
 		// SessionStatus 라는 별도의 객체를 이용해야 한다.
 		
 		status .setComplete(); // 세션 무효화
@@ -307,7 +309,7 @@ public class MemberController {
 		if (result > 0) { // 성공시
 			path = "/";
 			message = "회원 가입 성공!";
-					
+					 
 		} else { // 실패 시
 			path =referer;
 			message="회원 가입 실패...";
