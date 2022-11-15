@@ -22,7 +22,7 @@ public interface MemberService  {
 	 * @return loginMember
 	 */
 	public abstract Member login(Member inputMember);
-
+	//public abstract 어디서든 접근 가능한 추상메서드
 	
 	
 	
