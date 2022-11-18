@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import edu.kh.project.board.model.service.BoardService;
+import edu.kh.project.board.model.vo.Board;
 
 @Controller
 public class BoardController {
@@ -44,5 +45,19 @@ public class BoardController {
 		
 		
 		return "board/boardList"; //forward
+	}
+	
+	//게시글 상세조회
+	@GetMapping("/board/{boardCode}/{boardNo}")
+	public String boardDetail(
+			@PathVariable("boardNo")int boardNo,
+			Model model) {
+		
+		// 게시글 상세조회 서비스 호출
+		Board board = service.selectBoardDetail(boardNo);
+		
+		
+		
+		return "board/boardDetail";
 	}
 }
