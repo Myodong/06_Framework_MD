@@ -30,6 +30,7 @@
      	 -->
 			<collection property="imageList" javaType="java.util.ArrayList" ofType="BoardImage" select="selectImageList" column="BOARD_NO"/>  
 			
+			<collection property="commentList" javaType="java.util.ArrayList" ofType="Comment" select="selectCommentList" column="BOARD_NO"/>  
 	</resultMap>
 
 	   <!-- BoardImage resultMap -->

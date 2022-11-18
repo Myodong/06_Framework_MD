@@ -51,12 +51,14 @@ public class BoardController {
 	@GetMapping("/board/{boardCode}/{boardNo}")
 	public String boardDetail(
 			@PathVariable("boardNo")int boardNo,
+			@PathVariable("boardCode")int boardCode,
 			Model model) {
 		
 		// 게시글 상세조회 서비스 호출
 		Board board = service.selectBoardDetail(boardNo);
-		
-		
+		// + 좋아요 수, 좋아요 여부
+		// + 조회 수 증가 (쿠키를 이용해서 해당 ip에서 당 하루 한번)
+		model.addAttribute("board", board);
 		
 		return "board/boardDetail";
 	}
