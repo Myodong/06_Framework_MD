@@ -130,25 +130,12 @@ memberEmail.addEventListener("input",function(){
             }, 
             error : () => { //비동기 통신이 실패했을 때, 수행한다.
                 console.log("ajax 통신 실패");
-
-
             },
             complete : () => { // success, error 수행여부 관계없이 무조건 수행
                 console.log("중복 검사 수행 완료");
             },
 
         });
-
-
-
-
-
-
-
-
-
-
-
     } else { //유효하지 않은 경우
 
         emailMessage.innerText = "이메일 형식이 유효하지 않습니다.";
@@ -157,7 +144,6 @@ memberEmail.addEventListener("input",function(){
 
         // 유효성 검사 확인 객체에 현재 상태 저장
         checkObj.memberEmail = false;
-
     }
 
 })
