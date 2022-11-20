@@ -80,7 +80,6 @@ public class AjaxController {
 		   // JS객체로 변환
 */   
 	   
-	   
 	   // 회원 목록 조회
 	   @GetMapping("/selectMemberList")
 	   @ResponseBody

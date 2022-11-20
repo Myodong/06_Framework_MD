@@ -279,7 +279,7 @@ public class MemberController {
 						String[] memberAddress/* name 속성값이 memberAddress인 값을 배열로 반환 */,
 						RedirectAttributes ra,
 						@RequestHeader("referer") String referer) {
-		
+		 
 		// 한글이 깨지는 이유
 		// -> POST 요청 시 인코딩 처리필요 -> web.xml 인코딩 필터 처리
 		
