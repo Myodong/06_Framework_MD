@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import edu.kh.project.board.model.vo.Board;
+import edu.kh.project.board.model.vo.BoardImage;
 import edu.kh.project.board.model.vo.Pagination;
 
 @Repository
@@ -117,6 +118,14 @@ public class BoardDAO {
 		if(result >0) result = board.getBoardNo();
 		
 		return result; //0 또는삽인된 게시글 번호
+	}
+
+	/** 게시글첨부 이미지 삽입(리스트형식)
+	 * @param boardImagesList
+	 * @return result(INSERT된 행의 개수)
+	 */
+	public int insertBoardImageList(List<BoardImage> boardImagesList) {
+		return sqlSession.insert("boardMapper.insertBoardImageList",boardImagesList);
 	}
 	
 }
