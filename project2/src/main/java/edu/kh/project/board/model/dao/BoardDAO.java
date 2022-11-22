@@ -110,7 +110,13 @@ public class BoardDAO {
 		
 		int result = sqlSession.insert("boardMapper.boardWrite",board);
 		
-		return 0;
+		// board의 getBoardNo필드
+		// -> <selectKet>로 인해서 생성된 시커스값이 세팅되어있음.
+		
+		// 메인 쿼리(INSERT) 성공시
+		if(result >0) result = board.getBoardNo();
+		
+		return result; //0 또는삽인된 게시글 번호
 	}
 	
 }

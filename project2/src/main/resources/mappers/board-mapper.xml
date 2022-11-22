@@ -198,15 +198,15 @@
 		keyProperty : key를 담을 변수를 지정하는 속성
 	 -->
 	<!-- 게시글 삽입 -->
-	<insert id="boardWrite" parameterType="Boa" useGeneratedKeys="true">
+	<insert id="boardWrite" parameterType="Board" useGeneratedKeys="true">
 	
 		<selectKey keyProperty="boardNo" resultType="_int" order="BEFORE">
 			SELECT SEQ_BOARD_NO.NEXTVAL FROM DUAL
 		</selectKey>
 	
 		INSERT INTO BOARD
-	  VALUES(SEQ_BOARD_NO.NEXTVAL,
-	            #{boardtitle},#{boardContent},
+	  VALUES(#{boardNo},
+	            #{boardTitle},#{boardContent},
 	            DEFAULT, DEFAULT, DEFAULT, DEFAULT,
 	            #{memberNo},#{boardCode})
 	</insert>

@@ -12,6 +12,7 @@ import org.springframework.web.multipart.MultipartFile;
 import edu.kh.project.board.model.dao.BoardDAO;
 import edu.kh.project.board.model.vo.Board;
 import edu.kh.project.board.model.vo.Pagination;
+import edu.kh.project.common.Util;
 
 /**
  * @author gyehd
@@ -89,18 +90,24 @@ public class BoardServiceImpl implements BoardService{
 		return dao.boardDelete(boardNo);
 	}
 	
-	// 게시글 삽dlq
+	// 게시글 삽입
 	@Override
 	public int boardWrite(Board board, List<MultipartFile> imageList, String webPath, String folderPath) {
 		
 		// 1. 게시글만 삽입
-		// 1) ~~처리
+		// 1) XSS(크로스 사이트 스크립트 공격), 개행문자 처리
+		board.setBoardTitle(Util.XSSHandling(board.getBoardTitle()));
+		board.setBoardContent(Util.XSSHandling(board.getBoardContent()));
 		
+		board.setBoardContent(Util.newLineHandling(board.getBoardContent()));
+
 		///2) 게시글 삽입DAO 호출후
 		//    결과로 삽입된 게시글 번호 반환 받기
 		int boardNo =dao.boardWrite(board);
 		
-		return 0;
+		
+		
+		return boardNo;
 	}
 	
 }
