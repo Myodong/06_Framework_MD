@@ -127,5 +127,39 @@ public class BoardDAO {
 	public int insertBoardImageList(List<BoardImage> boardImagesList) {
 		return sqlSession.insert("boardMapper.insertBoardImageList",boardImagesList);
 	}
+
+	
+	
+	/** 게시글 수정
+	 * @param board
+	 * @return
+	 */
+	public int boardUpdate(Board board) {
+	      return sqlSession.update("boardMapper.boardUpdate",board);
+	   }
+
+	/** 게시글 이미지 삭제
+	 * @param condition
+	 * @return
+	 */
+	public int boardImageDelete(String condition) {
+		return sqlSession.delete("boardMapper.boardImageDelete",condition);
+	}
+
+	/** 이미지 수정
+	 * @param img
+	 * @return result
+	 */
+	public int boardImageUpdate(BoardImage img) {
+		return sqlSession.update("boardMapper.boardImageUpdate",img);
+	}
+
+	/** 이미지 삽입
+	 * @param img
+	 * @return result
+	 */
+	public int boardImageInsert(BoardImage img) {
+		return sqlSession.insert("boardMapper.boardImageInsert",img);
+	}
 	
 }
