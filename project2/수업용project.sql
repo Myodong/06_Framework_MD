@@ -592,18 +592,49 @@ VALUES(SEQ_IMG_NO.NEXTVAL, '/resources/images/board/',
 -- INSERT ALL : 한번에 여러 행 삽입 (단, 시쿼스 사용 불가)
 
 --서브쿼리를 이용한 INSERT + UNION ALL
+INSERT INTO BOARD_IMG 
 SELECT SEQ_IMG_NO.NEXTVAL IMG_NO, A.* FROM
 (SELECT '경로' IMG_PATH,
       '변경된 파일' IMG_RENAME,
       '원본 파일명' IMG_ORIGINAL,
-      '이미지 순서' IMG_ORDER,
-      '게시글 번호' BOARD_NO
+      1 IMG_ORDER,
+      1000 BOARD_NO
 FROM DUAL
 UNION ALL
 SELECT '경로2' IMG_PATH,
       '변경된 파일2' IMG_RENAME,
       '원본 파일명2' IMG_ORIGINAL,
-      '이미지 순서2' IMG_ORDER,
-      '게시글 번호2' BOARD_NO
+      2 IMG_ORDER,
+      1000 BOARD_NO
 FROM DUAL) A
+
+ROLLBACK;
+
+SELECT *FROM BOARD_IMG;
+
+-- 이미지 삭제
+DELETE FROM BOARD_IMG
+WHERE BOARD_NO =2017
+AND IMG_ORDER IN (1,2,3,4);
+
+ROLLBACK
+	UPDATE BOARD_IMG SET
+	IMG_RENAME = #{imageReName},
+	IMG_ORIGINAL =#{imageOriginal}
+	WHERE BOARD_NO =#{boardNo}
+	AND IMG_ORDER =#{imageOrder}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
