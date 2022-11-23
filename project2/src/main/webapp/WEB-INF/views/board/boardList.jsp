@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
+<c:set var="boardName" value="${boardTypeList[boardCode-1].BOARD_NAME}" />
+
 
 <%-- map에 저장된 값을 꺼내어 각각 변수에 저장 --%>
 <c:set var="boardList" value="${map.boardList}" />
