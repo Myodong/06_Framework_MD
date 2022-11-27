@@ -31,7 +31,7 @@
 
             <%-- 쿠키에 saveId가 있는 경우 변수 생성--%>
             <c:if test="${!empty cookie.saveId.value}">
-                <c:set var="tmep" value="checked"/>
+                <c:set var="temp" value="checked"/>
             </c:if>
 
             <div class="saveId-area">
