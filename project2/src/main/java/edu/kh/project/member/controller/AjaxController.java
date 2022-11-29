@@ -72,7 +72,7 @@ public class AjaxController {
 	   public Member selectEmail(String email) {
 		   
 		   // jackson이란?
-		   // JSON <-> Java 객체 <-> JSON
+		   // JS객체 <-> Java 객체 <-> JSON
 		   Member member = service.selectEmail(email);
 		   
 		   return member;
