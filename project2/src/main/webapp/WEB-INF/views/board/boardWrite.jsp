@@ -88,7 +88,7 @@
             </div>
 
 
-             <!-- 버튼 영역 -->
+            <!-- 버튼 영역 -->
             <div class="board-btn-area">
                 <button type="submit" id="writebtn">등록</button>
             </div>

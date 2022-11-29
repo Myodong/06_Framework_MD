@@ -1,11 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
-<c:set var="boardName" value="${boardTypeList[boardCode-1].BOARD_NAME}" />
-
 
 <%-- map에 저장된 값을 꺼내어 각각 변수에 저장 --%>
-<c:set var="boardList" value="${map.boardList}" />
-<c:set var="pagination" value="${map.pagination}" />
+<c:set var="boardList" value="${map.boardList}"/>
+<c:set var="pagination" value="${map.pagination}"/>
 
 
 
@@ -25,12 +23,13 @@
 <body>
     <main>
         <jsp:include page="/WEB-INF/views/common/header.jsp"/>
+
         <%-- 검색을 진행한 경우 --%>
         <c:if test="${not empty param.key}">
-            <%-- /board/1?cp=3&key=t&query=테스트 --%>
+            <%-- &key=t&query=테스트 --%>
             <c:set var="sURL" value="&key=${param.key}&query=${param.query}"/>
-        
         </c:if>
+
         
         <section class="board-list">
 
@@ -52,6 +51,7 @@
                     </thead>
 
                     <tbody>
+
                         <c:choose>
                             <c:when test="${empty boardList}">
                                 <!-- 게시글 목록 조회 결과가 비어있다면 -->
@@ -62,15 +62,17 @@
 
                             <c:otherwise>
                                 <c:forEach var="board" items="${boardList}">
-                                    <!-- 게시글 목록 조회 결과가 있다면 -->
                                     <tr>
-                                        <td>${board.boardNo}</td>
+                                        <td>${board.boardNo}</td>   
                                         <td> 
+
                                             <%-- 썸네일이 있을 경우에만 출력 --%>
                                             <c:if test="${not empty board.thumbnail}">
                                                 <img class="list-thumbnail" src="${board.thumbnail}">
                                             </c:if>
-                                            <%-- /board/1/1500?cp=1
+
+                                            
+                                            <%-- /board/1/1500?cp=1 
                                                 /board/{boardCode}/{boardNo}?cp=${pagination.currentPage}
                                             --%>
                                             <a href="/board/${boardCode}/${board.boardNo}?cp=${pagination.currentPage}${sURL}">${board.boardTitle}</a>   
@@ -81,7 +83,7 @@
                                         <td>${board.readCount}</td>
                                         <td>${board.likeCount}</td>
                                     </tr>
-                                </c:forEach>
+                                </c:forEach>                                                        
                             </c:otherwise>
                         </c:choose>
 
@@ -96,22 +98,23 @@
                 <c:if test="${not empty loginMember}">
                     <button id="insertBtn">글쓰기</button>                     
                 </c:if>
-
             </div>
+
 
             <div class="pagination-area">
 
-
                 <ul class="pagination">
                 
+                    
                     <!-- 첫 페이지로 이동 -->
                     <li><a href="/board/${boardCode}?cp=1${sURL}">&lt;&lt;</a></li>
 
                     <!-- 이전 목록 마지막 번호로 이동 -->
                     <li><a href="/board/${boardCode}?cp=${pagination.prevPage}${sURL}">&lt;</a></li>
 
-					
-                    <c:forEach var="i" begin="${pagination.startPage}" end="${pagination.endPage}" step="1">
+                    <c:forEach var="i" begin="${pagination.startPage}" 
+                        end="${pagination.endPage}" step="1">
+
                         <c:choose>
                             <c:when test="${i == pagination.currentPage}">
                                 <!-- 현재 보고있는 페이지 -->
@@ -123,8 +126,9 @@
                                 <li><a href="/board/${boardCode}?cp=${i}${sURL}">${i}</a></li>
                             </c:otherwise>
                         </c:choose>
-                    </c:forEach>
 
+                    </c:forEach>
+                    
                     <!-- 다음 목록 시작 번호로 이동 -->
                     <li><a href="/board/${boardCode}?cp=${pagination.nextPage}${sURL}">&gt;</a></li>
 
@@ -133,7 +137,6 @@
 
                 </ul>
             </div>
-
 
 			<!-- 검색창 -->
             <form action="${boardCode}" method="get" id="boardSearch" onsubmit="return true">
@@ -163,11 +166,9 @@
 
     <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 
-<script>
+    <script>
         const boardCode = "${boardCode}";
     </script>
     <script src="/resources/js/board/boardList.js"></script>
-
-
 </body>
 </html>

@@ -95,4 +95,10 @@ public interface BoardService {
 	 * @return boardList
 	 */
 	Map<String, Object> selectBoardList(Map<String, Object> pm, int cp);
+
+
+	/** 이미지 목록 조회
+	 * @return dbList
+	 */
+	List<String> selectImageList();
 }
