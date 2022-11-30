@@ -25,10 +25,14 @@
 	<jsp:include page="../common/header.jsp"></jsp:include>
 	
 		<div class="chatting-area">
+			<!--------------------- 채팅 리스트 --------------------->
+
 			<ul class="chatting-list">
 				<c:forEach var="room" items="${roomList}">
+					
 					<%--  id == 채팅방 번호 --%>
 					<li class="chatting-item" id="${room.chattingNo}-${room.targetNo}">
+								<%-- 프로필이미지 --%>
 						<div class="item-header">
 							<c:if test="${not empty room.targetProfile}">
 								<img class="list-profile" src="${room.targetProfile}">
@@ -50,6 +54,7 @@
 								</c:if>
 							</div>
 						</div>
+					
 					</li>
 				</c:forEach>
 
