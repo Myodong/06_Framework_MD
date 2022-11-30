@@ -73,5 +73,8 @@
                 </li>
                 </c:forEach>
 
+                <li>
+                    <a href="/chatting">채팅</a>
+                </li>
             </ul>
     </nav>
