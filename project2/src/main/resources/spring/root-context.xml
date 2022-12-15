@@ -20,7 +20,7 @@
 	<bean id="dataSource"	class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
 
 		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
-		<property name="url" value="jdbc:oracle:thin:@localhost:49681:xe" />
+		<property name="url" value="jdbc:oracle:thin:@localhost:49688:xe" />
 		<property name="username" value="project" />
 		<property name="password" value="project1234" />
 
